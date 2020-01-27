@@ -7,13 +7,16 @@
  */
 
 import React from 'react';
-import { createAppContainer } from 'react-navigation';
+import { StackActions, NavigationActions, createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { Container, Header, Left, Body, Right, Button, Icon, Title, View, Text } from 'native-base';
 import Welcome from './welcome'
 import 'react-native-gesture-handler';
 
 class HomePage extends React.Component {
+  constructor(props) {
+    super(props);
+}
     render() {
         return (
             <Container>
@@ -24,14 +27,13 @@ class HomePage extends React.Component {
                   <Title>Choix de liste</Title>
                 </Body>
                 <Right>
-                  <Button transparent>
-                    <Icon name='menu' />
+                  <Button transparent><Text>Menu</Text>     
                   </Button>
                 </Right>
               </Header>
               <Body>
                   <View style = {{marginTop:50,}}>
-                    <Button bordered dark 
+                  <Button bordered dark 
                     style = {{width:80, height:80,justifyContent:"center"}}
                     onPress={() => this.props.navigation.navigate('Test')}
                     >
@@ -43,10 +45,6 @@ class HomePage extends React.Component {
           );
     }
   }
-  const AppNavigator = createStackNavigator({
-    Home: HomePage,
-    Test: Welcome,
-  },
-  );
+
   
 export default HomePage;
