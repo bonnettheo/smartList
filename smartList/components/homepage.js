@@ -35,7 +35,7 @@ class HomePage extends React.Component {
                   <View style = {{marginTop:50,}}>
                   <Button bordered dark 
                     style = {{width:80, height:80,justifyContent:"center"}}
-                    onPress={() => this.props.navigation.navigate('Test')}
+                    onPress={() => this.props.navigation.navigate('ResearchRecipe')}
                     >
                        <Text>+</Text>
                     </Button>

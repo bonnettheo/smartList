@@ -1,69 +1,74 @@
-import React, {Component} from "react";
+import React from "react";
 import {
-    StyleSheet,
     FlatList,
     View,
-    ScrollView,
     Text,
     TextInput,
     TouchableOpacity
 } from "react-native";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
-import EntypoIcon from "react-native-vector-icons/Entypo";
+import 'react-native-gesture-handler';
 
-function recipeList(props) {
-    return (
-        <View style={styles.container}>
-            <View style={styles.rect}>
-                <View style={styles.buttonStack}>
-                    <Text style={styles.loremIpsum1}>Nom de recette</Text>
-                    <TouchableOpacity style={styles.button}>
-                        <FontAwesomeIcon
-                            name="user-circle"
-                            style={styles.icon}
-                        />
-                    </TouchableOpacity>
+class recipeList extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <View style={styles.container}>
+                <View style={styles.rect}>
+                    <View style={styles.buttonStack}>
+                        <Text style={styles.loremIpsum1}>Nom de recette</Text>
+                        <TouchableOpacity style={styles.button}>
+                            <FontAwesomeIcon
+                                name="user-circle"
+                                style={styles.icon}
+                            />
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
-            <View style={styles.scrollArea}>
-                <FlatList
-                    data={[{title: "titre 1"}, {title: "titre 2"}, {title: "titre 3"}, {title: "titre 4"}, {title: "titre 5"}, {title: "titre 6"}, {title: "titre 7"}]}
-                    keyExtractor={item => item.title}
-                    renderItem={({item, separators}) => {
-                        return (<View style={styles.list}>
-                            <View style={styles.photo}/>
-                            <View style={styles.content}>
-                                <View style={styles.description}>
-                                    <Text style={styles.resume}>Résumé</Text>
-                                    <Text style={styles.titre}>{item.title}</Text>
+                <View style={styles.scrollArea}>
+                    <FlatList
+                        data={[{title: "titre 1"}, {title: "titre 2"}, {title: "titre 3"}, {title: "titre 4"}, {title: "titre 5"}, {title: "titre 6"}, {title: "titre 7"}]}
+                        keyExtractor={item => item.title}
+                        renderItem={({item, separators}) => {
+                            return (<View style={styles.list}>
+                                <View style={styles.photo}/>
+                                <View style={styles.content}>
+                                    <View style={styles.description}>
+                                        <Text style={styles.resume}>Résumé</Text>
+                                        <Text style={styles.titre}>{item.title}</Text>
+                                    </View>
+                                    <View style={styles.addUser}>
+                                        <TextInput
+                                            placeholderTextColor="rgba(0,0,0,1)"
+                                            defaultValue="1"
+                                            editable={true}
+                                            keyboardType="numeric"
+                                            style={styles.textInput}
+                                        />
+                                        <FontAwesomeIcon
+                                            name="user"
+                                            style={styles.icon2}
+                                        />
+                                    </View>
                                 </View>
-                                <View style={styles.addUser}>
-                                    <TextInput
-                                        placeholder="1"
-                                        placeholderTextColor="rgba(0,0,0,1)"
-                                        defaultValue="1"
-                                        editable={true}
-                                        keyboardType="numeric"
-                                        style={styles.textInput}
-                                    />
+                                <TouchableOpacity style={styles.button2}>
                                     <FontAwesomeIcon
-                                        name="user"
-                                        style={styles.icon2}
-                                    />
-                                </View>
-                            </View>
-                            <TouchableOpacity style={styles.button2}>
-                                <EntypoIcon name="plus" style={styles.icon3}/>
-                            </TouchableOpacity>
-                        </View>)
-                    }}/>
-            </View>
+                                        name='plus'
+                                        style={styles.icon3}/>
+                                </TouchableOpacity>
+                            </View>)
+                        }}/>
+                </View>
 
-        </View>
-    );
+            </View>
+        );
+    }
+
 }
 
-const styles = StyleSheet.create({
+const styles = {
     list: {
         flex: 1,
         flexDirection: "row"
@@ -137,7 +142,11 @@ const styles = StyleSheet.create({
         color: "#121212",
         alignSelf: "stretch",
         fontFamily: "roboto-regular",
-        textAlign: "center"
+        margin: "15%",
+        textAlign: "center",
+        borderColor: "#000000",
+        borderWidth: 1,
+        borderBottomWidth: 1
     },
     icon2: {
         color: "rgba(0,0,0,1)",
@@ -155,7 +164,7 @@ const styles = StyleSheet.create({
     },
     icon3: {
         color: "rgba(0,0,0,1)",
-        fontSize: 85,
+        fontSize: 50,
         alignSelf: "center"
     },
     rect: {
@@ -192,6 +201,6 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
         justifyContent: "space-between"
     }
-});
+};
 
 export default recipeList;

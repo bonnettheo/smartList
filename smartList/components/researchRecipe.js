@@ -6,31 +6,38 @@ import {
     TextInput,
     TouchableOpacity
 } from "react-native";
+import 'react-native-gesture-handler';
 
-function ResearchRecipe(props) {
-    return (
-        <View style={styles.container}>
-            <Text style={styles.rechercherRecette}>Rechercher Recette</Text>
-            <TextInput
-                placeholder="Nom de recette"
-                style={styles.textInput}
-            />
-            <TouchableOpacity style={styles.button3}>
-                <Text style={styles.creerALaMain}>Créer à la main</Text>
-            </TouchableOpacity>
-            <View style={styles.rect}>
-                <TouchableOpacity style={styles.button2}>
-                    <Text style={styles.loremIpsum1}>Annuler</Text>
+class Welcome extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        return (
+            <View style={styles.container}>
+                <Text style={styles.rechercherRecette}>Rechercher Recette</Text>
+                <TextInput
+                    placeholder="Nom de recette"
+                    style={styles.textInput}
+                />
+                <TouchableOpacity style={styles.button3}>
+                    <Text style={styles.creerALaMain}>Créer à la main</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.loremIpsum}>Rechercher</Text>
-                </TouchableOpacity>
+                <View style={styles.rect}>
+                    <TouchableOpacity style={styles.button2}>
+                        <Text style={styles.loremIpsum1} onPress={() => this.props.navigation.navigate('List')}>Annuler</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.button}>
+                        <Text style={styles.loremIpsum} onPress={() => this.props.navigation.navigate('RecipeList')}>Rechercher</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
-        </View>
-    );
+        );
+    }
+
 }
 
-const styles = StyleSheet.create({
+const styles = {
     container: {
         flex: 1,
         alignItems: "flex-start",
@@ -116,6 +123,6 @@ const styles = StyleSheet.create({
         fontFamily: "roboto-regular",
         textAlign: "center"
     }
-});
+};
 
-export default ResearchRecipe;
+export default Welcome;
