@@ -16,7 +16,7 @@ const RootStack = createStackNavigator(
     ResearchRecipe: researchRecipe,
   },
   {
-    initialRouteName: 'ResearchRecipe',
+    initialRouteName: 'Home',
     headerMode: 'none',
   }
 );
