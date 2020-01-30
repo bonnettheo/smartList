@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
-import { Container, Header, Content, Button, Text, Input, Item, View } from 'native-base';
 import homepage from './components/homepage';
 import welcome from './components/welcome';
 import researchRecipe from './components/researchRecipe';
 import recipeList from "./components/recipeList";
+import shopList from "./components/shopList";
 
 
 const RootStack = createStackNavigator(
@@ -14,6 +14,7 @@ const RootStack = createStackNavigator(
     List: homepage,
     RecipeList:  recipeList,
     ResearchRecipe: researchRecipe,
+    ShopList: shopList,
   },
   {
     initialRouteName: 'Home',
