@@ -7,7 +7,7 @@ import {
     TouchableOpacity
 } from "react-native";
 
-function SearchRecipe(props) {
+function ResearchRecipe(props) {
     return (
         <View style={styles.container}>
             <Text style={styles.rechercherRecette}>Rechercher Recette</Text>
@@ -118,4 +118,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default SearchRecipe;
+export default ResearchRecipe;
