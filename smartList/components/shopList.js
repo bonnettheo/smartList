@@ -4,12 +4,18 @@ import {
     View,
     Text,
     FlatList,
-    CheckBox,
     TouchableOpacity,
     TextInput,
-    SectionList
-
+    SectionList,
 } from 'react-native';
+
+import Checkbox from 'react-native-custom-checkbox';
+
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+
+
+
+
 
 class ShopList extends Component {
 
@@ -61,12 +67,13 @@ class ShopList extends Component {
             form = (
                 <View>
                     <FlatList data={this.state.elements} style={styles.checkBoxAndElement} renderItem={({ item }) =>
-                        <View style={{ flexDirection: 'row' }}>
-                            <CheckBox style={styles.checkBox}
+                        <View style={styles.viewLigneElement}>
+                            <Checkbox style={styles.checkBoxStyle}
+                                      size={25}
+                                      checked={false}
                                       value={this.state.states[item]}
-                                      onValueChange={() => {let x = this.state.states;
-                                          x[item] = !x[item];
-                                          this.setState({ states: x });}}
+                                      onChange={(checked) => {let x = this.state.states;
+                                          this.checked = !checked; }}
                             />
 
                             <Text style={styles.textCheckBox}>{item}</Text>
@@ -94,11 +101,11 @@ class ShopList extends Component {
         } else if (this.state.showForm === 1) {
             form = (
                 <View>
-                    <SectionList
+                    <SectionList style={styles.sectionListStyle}
                         sections={[
                             {title: 'Quiche Lorraine', data: ['Oeufs', 'Lardon', 'Lait', 'Farine']},
                             {title: 'Purée', data: ['Pomme de terre', 'Lait']},
-                            {title: 'Autre', data: ['Lessive']},
+                            {title: 'Autre', data: ['Lessive', 'Test', 'Test']},
                         ]}
                         renderItem={({item}) => <Text style={styles.itemListGroup}>{item}</Text>}
                         renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
@@ -111,14 +118,14 @@ class ShopList extends Component {
         return(
             <View style = {styles.allPages}>
 
-                <View style = {styles.buttonRecette}>
-                    <TouchableOpacity onPress={() => this.setState({showForm: 1})}>
+                <View style = {styles.buttonViewListeRecette}>
+                    <TouchableOpacity style={styles.buttonRecette} onPress={() => this.setState({showForm: 1})}>
                         <Text style = {styles.buttonRecetteText}>
                             Recette
                         </Text>
                     </TouchableOpacity>
 
-                    <TouchableOpacity onPress={() => this.setState({showForm: 0})}>
+                    <TouchableOpacity style={styles.buttonListe} onPress={() => this.setState({showForm: 0})}>
                         <Text style = {styles.buttonListeText}>
                             Liste
                         </Text>
@@ -132,6 +139,10 @@ class ShopList extends Component {
                     onChangeText={(text) => this.setState({text})}
                     value={this.state.text}
                 />
+
+                <TouchableOpacity style={styles.buttonAdd} >
+                    <FontAwesome name={"plus"}  size={30} color="white" />
+                </TouchableOpacity>
 
                 <View>
                     {form}
@@ -153,17 +164,34 @@ const styles = StyleSheet.create({
     textTitle: {
         textAlign: 'center',
         fontSize: 30,
+        fontFamily: 'Helvetica Neue',
         borderStyle: 'solid',
-        borderColor: 'black',
+        borderColor: '#FF6F61',
         borderWidth: 2,
+        borderRadius: 10,
+
         backgroundColor: 'white',
 
-        margin: 25,
+        marginLeft: 20,
+        marginRight: 20,
+        marginBottom: 40,
     },
 
     textCheckBox: {
         marginTop: 5,
-        fontSize: 22,
+        fontSize: 25,
+        fontFamily: 'Helvetica Neue',
+
+    },
+
+    checkBoxStyle: {
+        backgroundColor: '#f2f2f2',
+        color:'#FF6F61',
+        borderRadius: 5,
+        borderWidth: 2,
+        margin: 10,
+
+        borderColor: '#FF6F61',
     },
 
     checkBoxAndElement: {
@@ -173,52 +201,80 @@ const styles = StyleSheet.create({
     buttonRecetteText: {
         backgroundColor: '#FF6F61',
         fontSize: 22,
-        padding: 25,
+        fontFamily: 'Helvetica Neue',
         color: 'white',
-        width: 125,
-        height: 80,
+        fontWeight: 'bold',
+        width: 110,
+        height: 50,
+        paddingTop: 8,
 
-        borderColor: '#d66457',
-        borderStyle: 'solid',
-        borderWidth: 2,
+        textAlign: 'center',
+
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#FF6F61',
+
     },
 
     buttonListeText: {
         backgroundColor: '#FF6F61',
         fontSize: 22,
-        padding: 25,
+        fontFamily: 'Helvetica Neue',
         color: 'white',
-        width: 125,
-        height: 80,
+        fontWeight: 'bold',
+        width: 110,
+        height: 50,
+        paddingTop: 8,
 
-        borderColor: '#d66457',
-        borderStyle: 'solid',
-        borderWidth: 2,
+        textAlign: 'center',
 
-        justifyContent: 'center',
-        alignItems: 'center',
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#FF6F61',
+
+    },
+
+    buttonViewListeRecette: {
+        flexDirection: 'row-reverse',
+        padding: 20,
+        marginTop: 10,
     },
 
     buttonRecette: {
-        flexDirection: 'row-reverse',
-        padding: 10,
+        marginLeft: 10,
+    },
+
+    buttonListe: {
+        fontFamily: 'Helvetica Neue',
     },
 
     inputNumber: {
-        borderColor: '#000000',
+        borderColor: '#FF6F61',
         borderStyle: 'solid',
         borderWidth: 2,
+        borderRadius: 10,
         fontSize: 20,
+        fontFamily: 'Helvetica Neue',
         backgroundColor: 'white',
 
         textAlign: 'center',
     },
 
-    viewIncrement: {
+    viewLigneElement: {
         flexDirection: 'row',
-        alignSelf: 'flex-end',
-        right: -200,
+        alignContent: 'space-around',
+        alignItems: 'flex-start',
+        marginLeft: 20,
+    },
+
+    viewIncrement: {
+        display: 'flex',
+        flexDirection: 'row',
+        width: 300 * 0.62,
+        flex: 1,
         justifyContent: 'center',
+        alignItems: 'center',
+        marginStart: 75,
     },
 
     buttonIncr: {
@@ -233,14 +289,37 @@ const styles = StyleSheet.create({
         fontSize: 22,
         fontWeight: 'bold',
         color: 'white',
-        backgroundColor: '#FF6F61',
+        backgroundColor: 'rgba(255,111,97,0.73)',
     },
 
     itemListGroup: {
         padding: 10,
         fontSize: 22,
         height: 44,
+
+        marginLeft: 20,
     },
+
+    buttonAdd: {
+        borderWidth:1,
+        borderColor:'white',
+        borderStyle: 'solid',
+        alignItems:'center',
+        justifyContent:'center',
+        width:60,
+        height:60,
+        backgroundColor:'#FF6F61',
+        borderRadius:50,
+
+        position: 'absolute',
+        top: 580,
+        left: 330,
+        zIndex: 10,
+    },
+
+    sectionListStyle: {
+
+    }
 
 });
 
