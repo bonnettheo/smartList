@@ -6,6 +6,7 @@ import homepage from './components/homepage';
 import welcome from './components/welcome';
 import researchRecipe from './components/researchRecipe';
 import recipeList from "./components/recipeList";
+import partage from "./components/partage";
 
 
 const RootStack = createStackNavigator(
@@ -14,6 +15,7 @@ const RootStack = createStackNavigator(
     List: homepage,
     RecipeList:  recipeList,
     ResearchRecipe: researchRecipe,
+    Partage: partage,
   },
   {
     initialRouteName: 'Home',

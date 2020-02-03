@@ -8,27 +8,29 @@ import {
 } from "react-native";
 import 'react-native-gesture-handler';
 
-class Welcome extends React.Component {
+class Partage extends React.Component {
     constructor(props) {
         super(props);
     }
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.rechercherRecette}>Rechercher Recette</Text>
+                <Text style={styles.partagerRecette}>Partager ma liste</Text>
+                <Text style={styles.partagerRecette1}>Liste partagée avec moi</Text>
+               
+               
+               
                 <TextInput
-                    placeholder="Nom de recette"
+                    placeholder="Email"
                     style={styles.textInput}
                 />
-                <TouchableOpacity style={styles.button3}>
-                    <Text style={styles.creerALaMain}>Créer à la main</Text>
-                </TouchableOpacity>
+                
                 <View style={styles.rect}>
                     <TouchableOpacity style={styles.button2}>
-                        <Text style={styles.loremIpsum1} onPress={() => this.props.navigation.navigate('Partage')}>Annuler</Text>
+                        <Text style={styles.loremIpsum1} onPress={() => this.props.navigation.navigate('List')}>Partager</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button}>
-                        <Text style={styles.loremIpsum} onPress={() => this.props.navigation.navigate('RecipeList')}>Rechercher</Text>
+                        <Text style={styles.loremIpsum} onPress={() => this.props.navigation.navigate('List')}>Valider</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -39,18 +41,30 @@ class Welcome extends React.Component {
 
 const styles = {
     container: {
-        flex: 1,
+        flex: 2,
         alignItems: "flex-start",
         flexWrap: "nowrap"
     },
-    rechercherRecette: {
+    partagerRecette: {
         left: 0,
         height: 37,
         color: "#121212",
         alignSelf: "stretch",
         justifyContent: "space-between",
         margin: 10,
-        fontSize: 25,
+        fontSize: 30,
+        fontFamily: "roboto-700",
+        textAlign: "center"
+    },
+
+    partagerRecette1: {
+        left: 10,
+        height: 30,
+        color: "#121212",
+        alignSelf: "stretch",
+        justifyContent: "space-between",
+        margin: 10,
+        fontSize: 15,
         fontFamily: "roboto-700",
         textAlign: "center"
     },
@@ -65,12 +79,7 @@ const styles = {
         fontFamily: "roboto-regular",
         textAlign: "left"
     },
-    button3: {
-        height: 50,
-        alignSelf: "center",
-        justifyContent: "space-around",
-        margin: 10
-    },
+   
     creerALaMain: {
         flex: 1,
         color: "rgba(24,11,251,1)",
@@ -125,4 +134,4 @@ const styles = {
     }
 };
 
-export default Welcome;
+export default Partage;
