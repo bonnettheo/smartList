@@ -15,6 +15,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import {Body, Button, Container, Header, Left, Right, Title} from "native-base";
 import ListCarre from '../assets/squares.svg'
 import Checklist from '../assets/checklist.svg'
+import Menu from "../assets/menu.svg";
 
 
 
@@ -123,16 +124,16 @@ class ShopList extends Component {
             <Container>
 
                 <Header style={styles.hearderStyle}>
-                    <Left>
-                    </Left>
-                    <Right>
+                    <Left style={{flex: 1,}}>
                         <Button
-                            style={styles.headerButton}
-                            transparent onPress={() => this.props.navigation.navigate('Partage')}><Text style={styles.headerButtonText}>Menu</Text>
+                            style={styles.headerButtonText}
+                            transparent onPress={() => this.props.navigation.navigate('Partage')}>
+                            <Menu height={35} width={35}/>
                         </Button>
+                    </Left>
+                    <Right style={{flex: 1,}}>
                     </Right>
                 </Header>
-
                 <View style = {styles.allPages}>
 
                     <View style = {styles.buttonViewListeRecette}>
@@ -179,7 +180,6 @@ const styles = StyleSheet.create({
 
     allPages: {
         flex: 1,
-        backgroundColor: '#eeeeee',
     },
 
     textTitle: {
@@ -200,6 +200,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
         fontSize: 25,
         fontFamily: 'Helvetica Neue',
+        textTransform: 'capitalize',
 
     },
 
@@ -287,6 +288,7 @@ const styles = StyleSheet.create({
         alignContent: 'space-around',
         alignItems: 'flex-start',
         marginLeft: 20,
+        marginBottom: 10,
     },
 
     viewIncrement: {

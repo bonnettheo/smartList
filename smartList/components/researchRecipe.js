@@ -4,9 +4,11 @@ import {
     View,
     Text,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity,
 } from "react-native";
 import 'react-native-gesture-handler';
+
+import {Container} from 'native-base';
 
 class Welcome extends React.Component {
     constructor(props) {
@@ -14,24 +16,26 @@ class Welcome extends React.Component {
     }
     render() {
         return (
-            <View style={styles.container}>
-                <Text style={styles.rechercherRecette}>Rechercher Recette</Text>
-                <TextInput
-                    placeholder="Nom de recette"
-                    style={styles.textInput}
-                />
-                <TouchableOpacity style={styles.button3}>
-                    <Text style={styles.creerALaMain}>Créer à la main</Text>
-                </TouchableOpacity>
-                <View style={styles.rect}>
-                    <TouchableOpacity style={styles.button2}>
-                        <Text style={styles.loremIpsum1} onPress={() => this.props.navigation.navigate('Partage')}>Annuler</Text>
+            <Container>
+                <View style={styles.container}>
+                    <Text style={styles.rechercherRecette}>Rechercher Recette</Text>
+                    <TextInput
+                        placeholder="Nom de recette"
+                        style={styles.textInput}
+                    />
+                    <TouchableOpacity style={styles.button3}>
+                        <Text style={styles.creerALaMain}>Créer à la main</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.loremIpsum} onPress={() => this.props.navigation.navigate('RecipeList')}>Rechercher</Text>
-                    </TouchableOpacity>
+                    <View style={styles.rect}>
+                        <TouchableOpacity style={styles.button2}>
+                            <Text style={styles.loremIpsum1} onPress={() => this.props.navigation.navigate('Partage')}>Annuler</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button}>
+                            <Text style={styles.loremIpsum} onPress={() => this.props.navigation.navigate('RecipeList')}>Rechercher</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
-            </View>
+            </Container>
         );
     }
 
@@ -40,8 +44,10 @@ class Welcome extends React.Component {
 const styles = {
     container: {
         flex: 1,
-        alignItems: "flex-start",
-        flexWrap: "nowrap"
+        alignItems: "center",
+        flexWrap: "nowrap",
+        backgroundColor: 'white',
+        marginTop: 60,
     },
     rechercherRecette: {
         left: 0,
@@ -50,6 +56,7 @@ const styles = {
         alignSelf: "stretch",
         justifyContent: "space-between",
         margin: 10,
+        marginBottom: 60,
         fontSize: 25,
         fontFamily: "roboto-700",
         textAlign: "center"
@@ -73,11 +80,12 @@ const styles = {
     },
     creerALaMain: {
         flex: 1,
-        color: "rgba(24,11,251,1)",
+        color: "#FF6F61",
         alignSelf: "center",
         justifyContent: "space-between",
-        fontFamily: "roboto-regular",
-        textAlign: "center"
+        fontFamily: "helvetica",
+        textAlign: "center",
+        fontSize: 18,
     },
     rect: {
         color: "#121212",
@@ -89,39 +97,43 @@ const styles = {
     button2: {
         height: 60,
         flex: 1,
-        backgroundColor: "rgba(215, 215, 215,1)",
         alignSelf: "stretch",
         marginRight: 3,
-        marginLeft: 3
+        marginLeft: 3,
+        backgroundColor: '#FF6F61',
+        borderRadius: 10,
     },
     loremIpsum1: {
-        color: "#121212",
+        color: "white",
         alignSelf: "stretch",
         justifyContent: "space-between",
         margin: 3,
         padding: 15,
         fontFamily: "roboto-regular",
         textAlign: "center",
-        flex: 1
+        flex: 1,
+        fontSize: 18,
     },
     button: {
         height: 60,
         flex: 1,
-        backgroundColor: "rgba(215, 215, 215,1)",
         alignSelf: "center",
         justifyContent: "space-between",
         marginRight: 3,
-        marginLeft: 3
+        marginLeft: 3,
+        backgroundColor: '#FF6F61',
+        borderRadius: 10,
     },
     loremIpsum: {
         flex: 1,
-        color: "#121212",
+        color: "white",
         alignSelf: "stretch",
         justifyContent: "space-between",
         margin: 3,
         padding: 15,
-        fontFamily: "roboto-regular",
-        textAlign: "center"
+        fontFamily: "helvetica",
+        textAlign: "center",
+        fontSize: 18,
     }
 };
 

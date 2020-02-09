@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.6",
+    "@react-navigation/drawer": "^5.0.0",
     "native-base": "^2.13.8",
     "react": "16.9.0",
     "react-native": "0.61.5",
@@ -25,7 +26,8 @@
     "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^4.0.10",
     "react-navigation-stack": "^2.0.15",
-    "rnpm": "^1.9.0"
+    "rnpm": "^1.9.0",
+    "@react-navigation/native": "latest"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",

@@ -8,61 +8,133 @@ import {
 } from "react-native";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import 'react-native-gesture-handler';
+import {Body, Button, Container, Header, Left, Right, Title} from "native-base";
+import { NavigationContainer } from '@react-navigation/native';
+import {
+    createDrawerNavigator,
+    DrawerContentScrollView,
+    DrawerItemList,
+    DrawerItem,
+} from '@react-navigation/drawer';
+
+import Menu from "../assets/menu.svg";
+
+function Feed({ navigation }) {
+    return (
+        <View>
+            <Button
+                style={styles.headerButtonText}
+                transparent
+                title={'Open drawer'}
+                onPress={() => navigation.openDrawer()}>
+                <Menu height={35} width={35}/>
+            </Button>
+        </View>
+    )
+};
+
+function Notifications() {
+    return (
+        <View style={{justifyContent: 'center', alignItems: 'center' }}>
+            <Text>Notifications Screen</Text>
+        </View>
+    );
+};
+
+function CustomDrawerContent(props) {
+    return (
+        <DrawerContentScrollView {...props}>
+            <DrawerItemList {...props} />
+            <DrawerItem
+                label="Close drawer"
+                onPress={() => props.navigation.closeDrawer()}
+            />
+            <DrawerItem
+                label="Toggle drawer"
+                onPress={() => props.navigation.toggleDrawer()}
+            />
+        </DrawerContentScrollView>
+    );
+};
+
+const Drawer = createDrawerNavigator();
+
+
+function MyDrawer() {
+
+    return (
+        <Drawer.Navigator drawerContent={props => CustomDrawerContent(props)}>
+            <Drawer.Screen name="Feed" component={Feed} />
+            <Drawer.Screen name="Notifications" component={Notifications} />
+        </Drawer.Navigator>
+    );
+}
 
 class recipeList extends React.Component {
     constructor(props) {
         super(props);
     }
+
     render() {
         return (
-            <View style={styles.container}>
-                <View style={styles.rect}>
-                    <View style={styles.buttonStack}>
-                        <Text style={styles.loremIpsum1}>Nom de recette</Text>
-                        <TouchableOpacity style={styles.button}>
-                            <FontAwesomeIcon
-                                name="user-circle"
-                                style={styles.icon}
-                            />
-                        </TouchableOpacity>
-                    </View>
-                </View>
-                <View style={styles.scrollArea}>
-                    <FlatList
-                        data={[{title: "titre 1"}, {title: "titre 2"}, {title: "titre 3"}, {title: "titre 4"}, {title: "titre 5"}, {title: "titre 6"}, {title: "titre 7"}]}
-                        keyExtractor={item => item.title}
-                        renderItem={({item, separators}) => {
-                            return (<View style={styles.list}>
-                                <View style={styles.photo}/>
-                                <View style={styles.content}>
-                                    <View style={styles.description}>
-                                        <Text style={styles.resume}>Résumé</Text>
-                                        <Text style={styles.titre}>{item.title}</Text>
-                                    </View>
-                                    <View style={styles.addUser}>
-                                        <TextInput
-                                            placeholderTextColor="rgba(0,0,0,1)"
-                                            defaultValue="1"
-                                            editable={true}
-                                            keyboardType="numeric"
-                                            style={styles.textInput}
-                                        />
-                                        <FontAwesomeIcon
-                                            name="user"
-                                            style={styles.icon2}
-                                        />
-                                    </View>
-                                </View>
-                                <TouchableOpacity style={styles.button2}>
-                                    <FontAwesomeIcon
-                                        name='plus'
-                                        style={styles.icon3}/>
-                                </TouchableOpacity>
-                            </View>)
-                        }}/>
-                </View>
+            <Container>
 
-            </View>
+                <Header style={styles.hearderStyle}>
+                    <Left style={{flex: 1,}}>
+                        {/*<Button
+                            style={styles.headerButtonText}
+                            transparent onPress={() => navigation.openDrawer()}>
+                            <Menu height={35} width={35}/>
+                        </Button>*/}
+                        <NavigationContainer>
+                            <MyDrawer/>
+                        </NavigationContainer>
+                    </Left>
+                    <Body style={styles.titleHearder}>
+                        <Title style={styles.titleHearderText}>Nom de recette</Title>
+                    </Body>
+                    <Right style={{flex: 1,}}>
+                    </Right>
+                </Header>
+
+                <View style={styles.container}>
+                    <View style={styles.scrollArea}>
+                        <FlatList
+                            data={[{title: "titre 1"}, {title: "titre 2"}, {title: "titre 3"}, {title: "titre 4"}, {title: "titre 5"}, {title: "titre 6"}, {title: "titre 7"}]}
+                            keyExtractor={item => item.title}
+                            renderItem={({item, separators}) => {
+                                return (<View style={styles.list}>
+                                    <View style={styles.photo}/>
+                                    <View style={styles.content}>
+                                        <View style={styles.description}>
+                                            <Text style={styles.resume}>Résumé</Text>
+                                            <Text style={styles.titre}>{item.title}</Text>
+                                        </View>
+                                        <View style={styles.addUser}>
+                                            <TextInput
+                                                placeholderTextColor="rgba(0,0,0,1)"
+                                                defaultValue="1"
+                                                editable={true}
+                                                keyboardType="numeric"
+                                                style={styles.textInput}
+                                            />
+                                            <FontAwesomeIcon
+                                                name="user"
+                                                style={styles.icon2}
+                                            />
+                                        </View>
+                                    </View>
+                                    <TouchableOpacity style={styles.button2}>
+                                        <FontAwesomeIcon
+                                            name='plus'
+                                            style={styles.icon3}/>
+                                    </TouchableOpacity>
+                                </View>)
+                            }}/>
+                    </View>
+
+                </View>
+            </Container>
         );
     }
 
@@ -71,17 +143,17 @@ class recipeList extends React.Component {
 const styles = {
     list: {
         flex: 1,
-        flexDirection: "row"
+        flexDirection: "row",
     },
     container: {
         flex: 1,
         alignItems: "center",
-        justifyContent: "flex-start"
+        justifyContent: "flex-start",
     },
     scrollArea: {
         height: 0,
         flex: 1,
-        backgroundColor: "rgba(230, 230, 230,1)",
+        backgroundColor: "white",
         flexDirection: "row",
         alignSelf: "stretch",
         justifyContent: "center",
@@ -94,20 +166,23 @@ const styles = {
         justifyContent: "space-between"
     },
     photo: {
-        width: "15%",
+        width: 100,
         height: 100,
         backgroundColor: "rgba(77,77,77,1)",
         marginBottom: 10
     },
     content: {
-        width: "70%",
+        width: 230,
         height: 100,
         flexDirection: "row",
         justifyContent: "flex-start",
         marginBottom: 10,
         borderColor: "#000000",
         borderWidth: 1,
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+
+        backgroundColor: '#eff0f2',
+
     },
     description: {
         width: "80%",
@@ -120,15 +195,20 @@ const styles = {
         flex: 1,
         color: "rgba(0,0,0,1)",
         alignSelf: "stretch",
-        fontFamily: "roboto-regular",
-        textAlign: "left"
+        fontFamily: "helvetica",
+        textAlign: "left",
+        marginLeft: 5,
     },
     titre: {
         height: 25,
         color: "rgba(0,0,0,1)",
         alignSelf: "stretch",
-        fontFamily: "roboto-700",
-        textAlign: "center"
+        fontFamily: "helvetica",
+        textAlign: "center",
+
+        marginTop: 10,
+        fontSize: 20,
+        textTransform: 'uppercase'
     },
     addUser: {
         width: "20%",
@@ -141,15 +221,17 @@ const styles = {
         flex: 1,
         color: "#121212",
         alignSelf: "stretch",
-        fontFamily: "roboto-regular",
+        fontFamily: "helvetica",
         margin: "15%",
         textAlign: "center",
         borderColor: "#000000",
         borderWidth: 1,
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+
+        backgroundColor: 'white',
     },
     icon2: {
-        color: "rgba(0,0,0,1)",
+        color: "#FF6F61",
         fontSize: 46,
         marginTop: 2
     },
@@ -160,10 +242,13 @@ const styles = {
         marginBottom: 10,
         borderColor: "#000000",
         borderWidth: 1,
-        justifyContent: "center"
+        justifyContent: "center",
+
+        backgroundColor: '#eff0f2',
+
     },
     icon3: {
-        color: "rgba(0,0,0,1)",
+        color: "#FF6F61",
         fontSize: 50,
         alignSelf: "center"
     },
@@ -200,6 +285,29 @@ const styles = {
         alignSelf: "stretch",
         flexWrap: "wrap",
         justifyContent: "space-between"
+    },
+
+    hearderStyle: {
+        backgroundColor:'#FF6F61',
+        textAlign: 'center',
+    },
+
+    hearderButton: {
+
+    },
+
+    headerButtonText: {
+        color: 'white',
+        fontSize: 20,
+    },
+
+    titleHearder: {
+        textAlign: 'center',
+    },
+
+    titleHearderText: {
+        textTransform: 'uppercase',
+        fontSize: 17,
     }
 };
 
