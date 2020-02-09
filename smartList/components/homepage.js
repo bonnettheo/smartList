@@ -27,7 +27,7 @@ class HomePage extends React.Component {
                         <Title>Choix de liste</Title>
                     </Body>
                     <Right>
-                        <Button transparent><Text>Menu</Text>
+                        <Button transparent onPress={() => this.props.navigation.navigate('Partage')}><Text>Menu</Text>
                         </Button>
                     </Right>
                 </Header>
