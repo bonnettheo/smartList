@@ -12,6 +12,9 @@ import {
 import Checkbox from 'react-native-custom-checkbox';
 
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import {Body, Button, Container, Header, Left, Right, Title} from "native-base";
+import ListCarre from '../assets/squares.svg'
+import Checklist from '../assets/checklist.svg'
 
 
 
@@ -102,53 +105,71 @@ class ShopList extends Component {
             form = (
                 <View>
                     <SectionList style={styles.sectionListStyle}
-                        sections={[
-                            {title: 'Quiche Lorraine', data: ['Oeufs', 'Lardon', 'Lait', 'Farine']},
-                            {title: 'Purée', data: ['Pomme de terre', 'Lait']},
-                            {title: 'Autre', data: ['Lessive', 'Test', 'Test']},
-                        ]}
-                        renderItem={({item}) => <Text style={styles.itemListGroup}>{item}</Text>}
-                        renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
-                        keyExtractor={(item, index) => index}
+                                 sections={[
+                                     {title: 'Quiche Lorraine', data: ['Oeufs', 'Lardon', 'Lait', 'Farine']},
+                                     {title: 'Purée', data: ['Pomme de terre', 'Lait']},
+                                     {title: 'Autre', data: ['Lessive', 'Test', 'Test']},
+                                 ]}
+                                 renderItem={({item}) => <Text style={styles.itemListGroup}>{item}</Text>}
+                                 renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+                                 keyExtractor={(item, index) => index}
                     />
                 </View>
             );
         }
 
         return(
-            <View style = {styles.allPages}>
 
-                <View style = {styles.buttonViewListeRecette}>
-                    <TouchableOpacity style={styles.buttonRecette} onPress={() => this.setState({showForm: 1})}>
-                        <Text style = {styles.buttonRecetteText}>
-                            Recette
-                        </Text>
+            <Container>
+
+                <Header style={styles.hearderStyle}>
+                    <Left>
+                    </Left>
+                    <Right>
+                        <Button
+                            style={styles.headerButton}
+                            transparent onPress={() => this.props.navigation.navigate('Partage')}><Text style={styles.headerButtonText}>Menu</Text>
+                        </Button>
+                    </Right>
+                </Header>
+
+                <View style = {styles.allPages}>
+
+                    <View style = {styles.buttonViewListeRecette}>
+                        <TouchableOpacity style={styles.buttonRecette} onPress={() => this.setState({showForm: 1})}>
+                            {/*<Text style = {styles.buttonRecetteText}>
+                                Recette
+                            </Text>*/}
+                            <ListCarre width={45} height={45}/>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style={styles.buttonListe} onPress={() => this.setState({showForm: 0})}>
+                           {/* <Text style = {styles.buttonListeText}>
+                                Liste
+                            </Text>*/}
+                            <Checklist width={45} height={45}/>
+                        </TouchableOpacity>
+
+                        <TextInput
+                            style={styles.textTitle}
+                            placeholder="Recette de paté au crabe"
+                            onChangeText={(text) => this.setState({text})}
+                            value={this.state.text}
+                        />
+                    </View>
+
+                    {/*<Text class="nomRecette" style={styles.textTitle}>Recette de paté de crabe</Text>*/}
+
+                    <TouchableOpacity style={styles.buttonAdd} >
+                        <FontAwesome name={"plus"}  size={30} color="white" />
                     </TouchableOpacity>
 
-                    <TouchableOpacity style={styles.buttonListe} onPress={() => this.setState({showForm: 0})}>
-                        <Text style = {styles.buttonListeText}>
-                            Liste
-                        </Text>
-                    </TouchableOpacity>
+                    <View>
+                        {form}
+                    </View>
+
                 </View>
-
-                {/*<Text class="nomRecette" style={styles.textTitle}>Recette de paté de crabe</Text>*/}
-                <TextInput
-                    style={styles.textTitle}
-                    placeholder="Recette de paté au crabe"
-                    onChangeText={(text) => this.setState({text})}
-                    value={this.state.text}
-                />
-
-                <TouchableOpacity style={styles.buttonAdd} >
-                    <FontAwesome name={"plus"}  size={30} color="white" />
-                </TouchableOpacity>
-
-                <View>
-                    {form}
-                </View>
-
-            </View>
+            </Container>
 
         );
     };
@@ -163,7 +184,7 @@ const styles = StyleSheet.create({
 
     textTitle: {
         textAlign: 'center',
-        fontSize: 30,
+        fontSize: 22,
         fontFamily: 'Helvetica Neue',
         borderStyle: 'solid',
         borderColor: '#FF6F61',
@@ -171,10 +192,8 @@ const styles = StyleSheet.create({
         borderRadius: 10,
 
         backgroundColor: 'white',
+        marginRight: 15,
 
-        marginLeft: 20,
-        marginRight: 20,
-        marginBottom: 40,
     },
 
     textCheckBox: {
@@ -236,8 +255,11 @@ const styles = StyleSheet.create({
 
     buttonViewListeRecette: {
         flexDirection: 'row-reverse',
+        justifyContent: 'center',
+        alignItems: 'center',
         padding: 20,
         marginTop: 10,
+        marginBottom: 20,
     },
 
     buttonRecette: {
@@ -312,13 +334,27 @@ const styles = StyleSheet.create({
         borderRadius:50,
 
         position: 'absolute',
-        top: 580,
+        top: 530,
         left: 330,
         zIndex: 10,
     },
 
     sectionListStyle: {
 
+    },
+
+    hearderStyle: {
+        backgroundColor:'#FF6F61',
+        textAlign: 'center',
+    },
+
+    hearderButton: {
+
+    },
+
+    headerButtonText: {
+        color: 'white',
+        fontSize: 25,
     }
 
 });

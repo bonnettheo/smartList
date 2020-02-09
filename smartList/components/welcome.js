@@ -11,55 +11,61 @@ class Welcome extends React.Component {
     }
     render() {
         return (
-          <Container>
+            <Container>
                 <View style = {styles.container}>
-                  <View style = {{flex:2, justifyContent:"center"}}>
-                      <Text style = {{fontSize:30}}>Bienvenue</Text>
-                  </View>
-                  <View style = {{flex:2,width:300}}>
-                     <Item regular>
-                          <Input placeholder='E-mail' />
-                      </Item> 
-                      <Item regular>
-                          <Input placeholder='Mot de passe' />
-                      </Item>
-                  </View>
-                  <View style = {{flex:3}}>
-                      <Button 
-                      onPress={() => this.props.navigation.navigate('List')}
-                      >
-                          <Text>Valider</Text>
-                      </Button>
-                  </View>
-                  
-                  
-                </View>
-              
-          </Container>
-        );
-      }
-  
-  }
+                    <View style = {{flex:2, justifyContent:"center"}}>
+                        <Text style = {{fontSize:30}}>Bienvenue</Text>
+                    </View>
+                    <View style = {{flex:2,width:300}}>
+                        <Item regular>
+                            <Input placeholder='E-mail' />
+                        </Item>
+                        <Item regular>
+                            <Input placeholder='Mot de passe' />
+                        </Item>
+                    </View>
+                    <View style = {{flex:3}}>
+                        <Button
+                            style={styles.buttonValider}
+                            onPress={() => this.props.navigation.navigate('List')}
+                        >
+                            <Text>Valider</Text>
+                        </Button>
+                    </View>
 
-  const styles = {
+
+                </View>
+
+            </Container>
+        );
+    }
+
+}
+
+const styles = {
     container: {
-        flex:1, 
-        flexDirection: 'column', 
+        flex:1,
+        flexDirection: 'column',
         alignItems: "center",
         height: 800,
     },
     headerStyle: {
-      fontSize: 36,
-      textAlign: 'center',
-      fontWeight: '100',
-      marginBottom: 24
+        fontSize: 36,
+        textAlign: 'center',
+        fontWeight: '100',
+        marginBottom: 24
     },
     elementsContainer: {
-      backgroundColor: '#ecf5fd',
-      marginLeft: 24,
-      marginRight: 24,
-      marginBottom: 24
-    }
-  }
+        backgroundColor: '#ecf5fd',
+        marginLeft: 24,
+        marginRight: 24,
+        marginBottom: 24
+    },
 
-  export default Welcome;
+    buttonValider: {
+        backgroundColor: '#FF6F61',
+        borderRadius: 10,
+    }
+}
+
+export default Welcome;
