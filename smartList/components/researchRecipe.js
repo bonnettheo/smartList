@@ -8,7 +8,8 @@ import {
 } from "react-native";
 import 'react-native-gesture-handler';
 
-import {Container} from 'native-base';
+import {Body, Button, Container, Header, Left, Right, Title} from 'native-base';
+import Menu from "../assets/menu.svg";
 
 class Welcome extends React.Component {
     constructor(props) {
@@ -17,6 +18,22 @@ class Welcome extends React.Component {
     render() {
         return (
             <Container>
+
+                <Header style={styles.hearderStyle}>
+                    <Left style={{flex: 1,}}>
+                        <Button
+                            style={styles.headerButtonText}
+                            transparent onPress={() => this.props.navigation.navigate('Partage')}>
+                            <Menu height={35} width={35}/>
+                        </Button>
+                    </Left>
+                    <Body style={styles.titleHearder}>
+                        <Title style={styles.titleHearderText}>Ajout de liste</Title>
+                    </Body>
+                    <Right style={{flex: 1,}}>
+                    </Right>
+                </Header>
+
                 <View style={styles.container}>
                     <Text style={styles.rechercherRecette}>Rechercher Recette</Text>
                     <TextInput
@@ -28,7 +45,7 @@ class Welcome extends React.Component {
                     </TouchableOpacity>
                     <View style={styles.rect}>
                         <TouchableOpacity style={styles.button2}>
-                            <Text style={styles.loremIpsum1} onPress={() => this.props.navigation.navigate('Partage')}>Annuler</Text>
+                            <Text style={styles.loremIpsum1} onPress={() => this.props.navigation.navigate('List')}>Annuler</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.button}>
                             <Text style={styles.loremIpsum} onPress={() => this.props.navigation.navigate('RecipeList')}>Rechercher</Text>
@@ -134,6 +151,32 @@ const styles = {
         fontFamily: "helvetica",
         textAlign: "center",
         fontSize: 18,
+    },
+
+
+
+    hearderStyle: {
+        backgroundColor:'#FF6F61',
+        textAlign: 'center',
+    },
+
+    hearderButton: {
+
+    },
+
+    headerButtonText: {
+        color: 'white',
+        fontSize: 20,
+    },
+
+    titleHearder: {
+        flex: 1,
+        textAlign: 'center',
+    },
+
+    titleHearderText: {
+        textTransform: 'uppercase',
+        fontSize: 17,
     }
 };
 

@@ -4,7 +4,7 @@ import {
     View,
     Text,
     TextInput,
-    TouchableOpacity
+    TouchableOpacity, Image
 } from "react-native";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import 'react-native-gesture-handler';
@@ -100,11 +100,19 @@ class recipeList extends React.Component {
                 <View style={styles.container}>
                     <View style={styles.scrollArea}>
                         <FlatList
-                            data={[{title: "titre 1"}, {title: "titre 2"}, {title: "titre 3"}, {title: "titre 4"}, {title: "titre 5"}, {title: "titre 6"}, {title: "titre 7"}]}
+                            data={[{title: "Pâte à crêpes simple", localisation: "../assets/crepesSimple.png"},
+                                {title: "Pâte à crêpes", localisation: "../assets/crepesSimple.png"},
+                                {title: "Pâte à crêpes (des plus raffinées)", localisation: "../assets/crepesSimple.png"},
+                                {title: "Pâte à crêpes légère", localisation: "../assets/crepesSimple.png"},
+                                {title: "Crêpes sans Lactose", localisation: "../assets/crepesSimple.png"},
+                                {title: "Crêpes sucrées", localisation: "../assets/crepesSimple.png"},
+                                {title: "Crêpes Vonassienne", localisation: "../assets/crepesSimple.png"}]}
                             keyExtractor={item => item.title}
                             renderItem={({item, separators}) => {
                                 return (<View style={styles.list}>
-                                    <View style={styles.photo}/>
+                                    <View style={styles.photo}>
+                                        <Image style={styles.imagePhoto} source={require("../assets/crepesSimple.png")} />
+                                    </View>
                                     <View style={styles.content}>
                                         <View style={styles.description}>
                                             <Text style={styles.resume}>Résumé</Text>
@@ -124,7 +132,10 @@ class recipeList extends React.Component {
                                             />
                                         </View>
                                     </View>
-                                    <TouchableOpacity style={styles.button2}>
+                                    <TouchableOpacity
+                                        style={styles.button2}
+                                        onPress={() => this.props.navigation.navigate('ShopList')}
+                                    >
                                         <FontAwesomeIcon
                                             name='plus'
                                             style={styles.icon3}/>
@@ -171,6 +182,10 @@ const styles = {
         backgroundColor: "rgba(77,77,77,1)",
         marginBottom: 10
     },
+    imagePhoto: {
+        width: 100,
+        height: 100,
+    },
     content: {
         width: 230,
         height: 100,
@@ -200,14 +215,14 @@ const styles = {
         marginLeft: 5,
     },
     titre: {
-        height: 25,
+        height: 40,
         color: "rgba(0,0,0,1)",
         alignSelf: "stretch",
         fontFamily: "helvetica",
         textAlign: "center",
 
         marginTop: 10,
-        fontSize: 20,
+        fontSize: 15,
         textTransform: 'uppercase'
     },
     addUser: {
