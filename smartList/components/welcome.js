@@ -13,24 +13,30 @@ class Welcome extends React.Component {
         return (
             <Container>
                 <View style = {styles.container}>
-                    <View style = {{flex:2, justifyContent:"center"}}>
+                    <View style = {{justifyContent:"center", paddingBottom: 30,}}>
                         <Text style = {{fontSize:30}}>Bienvenue</Text>
                     </View>
-                    <View style = {{flex:2,width:300}}>
+                    <View style = {{width:300, paddingBottom: 30,}}>
                         <Item regular>
                             <Input placeholder='E-mail' />
                         </Item>
                         <Item regular>
-                            <Input placeholder='Mot de passe' />
+                            <Input
+                                secureTextEntry={true}
+                                style={{ textContentType: 'password'}}
+                                placeholder='Mot de passe' />
                         </Item>
                     </View>
-                    <View style = {{flex:3}}>
+                    <View style = {{}}>
                         <Button
                             style={styles.buttonValider}
                             onPress={() => this.props.navigation.navigate('List')}
                         >
                             <Text>Valider</Text>
                         </Button>
+                        <Text style={styles.passerStyle}
+                              onPress={() => this.props.navigation.navigate('List')}>
+                            Passer</Text>
                     </View>
 
 
@@ -44,17 +50,19 @@ class Welcome extends React.Component {
 
 const styles = {
     container: {
-        flex:1,
+        flex: 1,
         flexDirection: 'column',
+        justifyContent: 'center',
         alignItems: "center",
-        height: 800,
     },
+
     headerStyle: {
         fontSize: 36,
         textAlign: 'center',
         fontWeight: '100',
         marginBottom: 24
     },
+
     elementsContainer: {
         backgroundColor: '#ecf5fd',
         marginLeft: 24,
@@ -65,6 +73,13 @@ const styles = {
     buttonValider: {
         backgroundColor: '#FF6F61',
         borderRadius: 10,
+    },
+
+    passerStyle: {
+        color: '#FF6F61',
+        textAlign: 'center',
+        marginTop: 10,
+        textDecorationLine: 'underline',
     }
 }
 

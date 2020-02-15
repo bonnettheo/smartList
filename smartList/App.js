@@ -7,27 +7,29 @@ import researchRecipe from './components/researchRecipe';
 import recipeList from "./components/recipeList";
 import shopList from "./components/shopList";
 import partage from "./components/partage";
+import presentation from "./components/presentation";
 
 
 const RootStack = createStackNavigator(
-  {
-    Home: welcome,
-    List: homepage,
-    RecipeList:  recipeList,
-    ResearchRecipe: researchRecipe,
-    ShopList: shopList,
-    Partage: partage,
-  },
-  {
-    initialRouteName: 'Home',
-    headerMode: 'none',
-  }
+    {
+        Home: welcome,
+        List: homepage,
+        RecipeList:  recipeList,
+        ResearchRecipe: researchRecipe,
+        ShopList: shopList,
+        Partage: partage,
+        Presentation: presentation,
+    },
+    {
+        initialRouteName: 'Presentation',
+        headerMode: 'none',
+    }
 );
 
 const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
-  render() {
-    return <AppContainer />;
-  }
+    render() {
+        return <AppContainer />;
+    }
 }
