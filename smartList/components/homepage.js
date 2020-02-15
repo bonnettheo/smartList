@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         width: 140,
         justifyContent: "center",
 
-        margin: 30,
+        margin: 20,
         borderColor: '#eff0f2',
         borderRadius: 15,
 
@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         width: 140,
         justifyContent: 'center',
 
-        margin: 30,
+        margin: 20,
         borderColor: '#eff0f2',
         backgroundColor: '#eff0f2',
         borderRadius: 15,

@@ -32,7 +32,7 @@ class Presentation extends Component {
                     <Toque width={200} height={200} style={styles.toque}/>
                     <Text style={styles.introStyle}>
                         Marre d'écrire vos ingrédients ? {"\n"}
-                        Vous souhaitez gagnez du temps ? {"\n"}
+                        Vous souhaitez gagner du temps ? {"\n"}
                         Vous souhaitez partager vos listes ? {"\n"}
                         Bienvenue sur <B>Smartlist</B>.
                     </Text>

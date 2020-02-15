@@ -28,27 +28,24 @@ class ShopList extends Component {
 
         this.state = {
             name: props.name,
-            elements: ['patate', 'oeuf','chaussure','farine'],
+            elements: ['patate', 'oeufs','Lardon','Lait', 'Farine', 'Lessive'],
             states:{},
             counter: 0,
             showForm: 0,
+
+            boolListCheck: true,
+            showButtonAdd: false,
+
+            sections: [
+                {title: 'Quiche Lorraine', data: ['Oeufs', 'Lardon', 'Lait', 'Farine']},
+                {title: 'Purée', data: ['Pomme de terre', 'Lait']},
+                {title: 'Autre', data: ['Lessive']}
+            ]
         }
     }
 
     IncrementItem = () => {
-        if(this.state.tempNum){
-            let sum = parseInt(this.state.counter) + parseInt(this.state.tempNum);
-            if(sum >=1 && sum <=99){
-                this.setState({ counter: sum, tempNum: null });
-            }else{
-                console.log("Number should be between 1 and 99");
-                this.setState({error:"Number should be between 1 and 99"})
-            }
-
-        }
-        else{
-            this.setState({ counter: this.state.counter + 1 });
-        }
+        this.setState({ counter: this.state.counter + 1 });
     };
 
     DecrementItem = () => {
@@ -65,6 +62,30 @@ class ShopList extends Component {
 
 
     render() {
+
+        let addRecette;
+        if(this.state.showButtonAdd){
+            addRecette = (
+                <Button
+                    style={styles.addRecette}
+                    onPress={() => this.props.navigation.navigate('ResearchRecipe')}
+                >
+                    <Text style={styles.addThingsText}>Recette</Text>
+                </Button>
+            )
+        }
+
+        let addElement;
+        if(this.state.showButtonAdd){
+            addElement = (
+                <Button
+                    style={styles.addElement}
+                    onPress={() => this.props.navigation.navigate('ResearchRecipe')}
+                >
+                    <Text style={styles.addThingsText}>Element</Text>
+                </Button>
+            )
+        }
 
         let form;
         if (this.state.showForm === 0) {
@@ -87,7 +108,6 @@ class ShopList extends Component {
                                 <TextInput type="text"
                                            keyboardType = 'numeric'
                                            name="tempNum"
-                                           value={this.state.tempNum}
                                            onChange={this.handleOnTextChange}
                                            maxValue={99}
                                            minValue={0}
@@ -106,11 +126,7 @@ class ShopList extends Component {
             form = (
                 <View>
                     <SectionList style={styles.sectionListStyle}
-                                 sections={[
-                                     {title: 'Quiche Lorraine', data: ['Oeufs', 'Lardon', 'Lait', 'Farine']},
-                                     {title: 'Purée', data: ['Pomme de terre', 'Lait']},
-                                     {title: 'Autre', data: ['Lessive', 'Test', 'Test']},
-                                 ]}
+                                 sections={this.state.sections}
                                  renderItem={({item}) => <Text style={styles.itemListGroup}>{item}</Text>}
                                  renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
                                  keyExtractor={(item, index) => index}
@@ -145,7 +161,7 @@ class ShopList extends Component {
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.buttonListe} onPress={() => this.setState({showForm: 0})}>
-                           {/* <Text style = {styles.buttonListeText}>
+                            {/* <Text style = {styles.buttonListeText}>
                                 Liste
                             </Text>*/}
                             <Checklist width={45} height={45}/>
@@ -161,9 +177,14 @@ class ShopList extends Component {
 
                     {/*<Text class="nomRecette" style={styles.textTitle}>Recette de paté de crabe</Text>*/}
 
-                    <TouchableOpacity style={styles.buttonAdd} >
-                        <FontAwesome name={"plus"}  size={30} color="white" />
-                    </TouchableOpacity>
+                    <View style={styles.viewAddThings}>
+                        <TouchableOpacity style={styles.buttonAdd} onPress={() => this.setState({showButtonAdd: !this.state.showButtonAdd})}>
+                            <FontAwesome name={"plus"}  size={30} color="white" />
+                        </TouchableOpacity>
+
+                        {addRecette}
+                        {addElement}
+                    </View>
 
                     <View>
                         {form}
@@ -186,10 +207,8 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 22,
         fontFamily: 'Helvetica Neue',
-        borderStyle: 'solid',
-        borderColor: '#FF6F61',
-        borderWidth: 2,
-        borderRadius: 10,
+        borderBottomColor: '#FF6F61',
+        borderBottomWidth: 2,
 
         backgroundColor: 'white',
         marginRight: 15,
@@ -334,15 +353,37 @@ const styles = StyleSheet.create({
         height:60,
         backgroundColor:'#FF6F61',
         borderRadius:50,
+    },
 
+    viewAddThings: {
         position: 'absolute',
         top: 530,
         left: 330,
         zIndex: 10,
     },
 
-    sectionListStyle: {
+    addRecette: {
+        backgroundColor: '#FF6F61',
+        justifyContent: 'center',
+        borderRadius: 10,
+        top: -120,
+    },
 
+    addElement: {
+        backgroundColor: '#FF6F61',
+        justifyContent: 'center',
+        borderRadius: 10,
+        top: -120,
+        left: -70,
+    },
+
+    addThingsText: {
+        color: 'white',
+    },
+
+    sectionListStyle: {
+        display: 'flex',
+        overflow: 'scroll',
     },
 
     hearderStyle: {
@@ -357,7 +398,7 @@ const styles = StyleSheet.create({
     headerButtonText: {
         color: 'white',
         fontSize: 25,
-    }
+    },
 
 });
 
