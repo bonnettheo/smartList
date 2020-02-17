@@ -8,6 +8,7 @@ import recipeList from "./components/recipeList";
 import shopList from "./components/shopList";
 import partage from "./components/partage";
 import presentation from "./components/presentation";
+import { Provider as PaperProvider } from 'react-native-paper';
 
 
 const RootStack = createStackNavigator(
@@ -30,6 +31,6 @@ const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
     render() {
-        return <AppContainer />;
+        return (<PaperProvider><AppContainer /></PaperProvider>);
     }
 }
