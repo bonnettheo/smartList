@@ -166,13 +166,12 @@ const styles = {
         flex: 1,
         backgroundColor: "white",
         flexDirection: "row",
-        alignSelf: "stretch",
+        alignSelf: "center",
         justifyContent: "center",
         margin: 10
     },
     scrollArea_contentContainerStyle: {
         flexDirection: "row",
-        alignSelf: "stretch",
         flexWrap: "wrap",
         justifyContent: "space-between"
     },
@@ -187,7 +186,7 @@ const styles = {
         height: 100,
     },
     content: {
-        width: 230,
+        flex: 2,
         height: 100,
         flexDirection: "row",
         justifyContent: "flex-start",
@@ -197,6 +196,7 @@ const styles = {
         borderBottomWidth: 1,
 
         backgroundColor: '#eff0f2',
+        paddingRight: 10,
 
     },
     description: {
@@ -222,7 +222,7 @@ const styles = {
         textAlign: "center",
 
         marginTop: 10,
-        fontSize: 15,
+        fontSize: 10,
         textTransform: 'uppercase'
     },
     addUser: {

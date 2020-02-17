@@ -89,7 +89,7 @@ class ShopList extends Component {
         }
 
         let form;
-        if (this.state.showForm === 0) {
+        if (this.state.showForm === 1) {
             form = (
                 <View>
                     <FlatList data={this.state.elements} style={styles.checkBoxAndElement} renderItem={({ item }) =>
@@ -123,7 +123,7 @@ class ShopList extends Component {
                               keyExtractor={item => item.id}/>
                 </View>
             );
-        } else if (this.state.showForm === 1) {
+        } else if (this.state.showForm === 0) {
             form = (
                 <View>
                     <SectionList style={styles.sectionListStyle}
@@ -159,14 +159,14 @@ class ShopList extends Component {
                 <View style = {styles.allPages}>
 
                     <View style = {styles.buttonViewListeRecette}>
-                        <TouchableOpacity style={styles.buttonRecette} onPress={() => this.setState({showForm: 1})}>
+                        <TouchableOpacity style={styles.buttonRecette} onPress={() => this.setState({showForm: 0})}>
                             {/*<Text style = {styles.buttonRecetteText}>
                                 Recette
                             </Text>*/}
                             <ListCarre width={45} height={45}/>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.buttonListe} onPress={() => this.setState({showForm: 0})}>
+                        <TouchableOpacity style={styles.buttonListe} onPress={() => this.setState({showForm: 1})}>
                             {/* <Text style = {styles.buttonListeText}>
                                 Liste
                             </Text>*/}
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
 
     textCheckBox: {
         marginTop: 5,
-        fontSize: 25,
+        fontSize: 20,
         fontFamily: 'Helvetica Neue',
         textTransform: 'capitalize',
 
@@ -302,7 +302,7 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderWidth: 2,
         borderRadius: 10,
-        fontSize: 20,
+        fontSize: 18,
         fontFamily: 'Helvetica Neue',
         backgroundColor: 'white',
 
@@ -329,6 +329,7 @@ const styles = StyleSheet.create({
 
     buttonIncr: {
         fontSize: 30,
+        marginRight: 3,
     },
 
     sectionHeader: {
@@ -344,7 +345,7 @@ const styles = StyleSheet.create({
 
     itemListGroup: {
         padding: 10,
-        fontSize: 22,
+        fontSize: 18,
         height: 44,
 
         marginLeft: 20,
@@ -365,7 +366,7 @@ const styles = StyleSheet.create({
     viewAddThings: {
         position: 'absolute',
         top: 530,
-        left: 330,
+        left: 270,
         zIndex: 10,
     },
 
