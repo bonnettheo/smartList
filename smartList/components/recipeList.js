@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import FontAwesomeIcon from "react-native-vector-icons/FontAwesome";
 import 'react-native-gesture-handler';
-import {Body, Button, Container, Header, Left, Right, Title} from "native-base";
+import {Body, Button, Container, Header, Left, Right, Title, ListItem} from "native-base";
 import { NavigationContainer } from '@react-navigation/native';
 import {
     createDrawerNavigator,
@@ -166,13 +166,12 @@ const styles = {
         flex: 1,
         backgroundColor: "white",
         flexDirection: "row",
-        alignSelf: "stretch",
+        alignSelf: "center",
         justifyContent: "center",
         margin: 10
     },
     scrollArea_contentContainerStyle: {
         flexDirection: "row",
-        alignSelf: "stretch",
         flexWrap: "wrap",
         justifyContent: "space-between"
     },
@@ -187,7 +186,7 @@ const styles = {
         height: 100,
     },
     content: {
-        width: 230,
+        flex: 2,
         height: 100,
         flexDirection: "row",
         justifyContent: "flex-start",
@@ -197,6 +196,7 @@ const styles = {
         borderBottomWidth: 1,
 
         backgroundColor: '#eff0f2',
+        padding: 10,
 
     },
     description: {
@@ -222,7 +222,7 @@ const styles = {
         textAlign: "center",
 
         marginTop: 10,
-        fontSize: 15,
+        fontSize: 10,
         textTransform: 'uppercase'
     },
     addUser: {

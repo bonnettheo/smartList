@@ -12,7 +12,7 @@ class HomePage extends React.Component {
     }
     state = {
         visible: false,
-        checked1: true,
+        checked1: false,
         checked2: false,
         checked3: false,
         checked4: false,
@@ -28,11 +28,7 @@ class HomePage extends React.Component {
             <Container>
                 <Header style={styles.hearderStyle}>
                     <Left style={{flex: 1,}}>
-                        <Button
-                            style={styles.headerButtonText}
-                            transparent onPress={() => this.props.navigation.navigate('Partage')}>
-                            <Menu1 height={35} width={35}/>
-                        </Button>
+
                     </Left>
                     <Body style={styles.titleHearder}>
                         <Title style={styles.titleHearderText}>Choix de liste</Title>
@@ -77,7 +73,7 @@ class HomePage extends React.Component {
                             <Text>Mango</Text>
                         </Body>
                     </ListItem>
-                    <Button primary><Text>+ Ajouter</Text></Button>
+                    <Button style={{backgroundColor:'#FF6F61'}}><Text>+ Ajouter</Text></Button>
                     </View>
                   
                   </Menu>
