@@ -16,21 +16,18 @@ class Partage extends React.Component {
         return (
             <View style={styles.container}>
                 <Text style={styles.partagerRecette}>Partager ma liste</Text>
-                <Text style={styles.partagerRecette1}>Liste partagée avec moi</Text>
-               
-               
-               
+
                 <TextInput
                     placeholder="Email"
                     style={styles.textInput}
                 />
-                
+
                 <View style={styles.rect}>
                     <TouchableOpacity style={styles.button2}>
-                        <Text style={styles.loremIpsum1} onPress={() => this.props.navigation.navigate('List')}>Partager</Text>
+                        <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('ShopList')}>Annuler</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={styles.button}>
-                        <Text style={styles.loremIpsum} onPress={() => this.props.navigation.navigate('List')}>Valider</Text>
+                        <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('ShopList')}>Partager</Text>
                     </TouchableOpacity>
                 </View>
             </View>
@@ -41,31 +38,30 @@ class Partage extends React.Component {
 
 const styles = {
     container: {
-        flex: 2,
-        alignItems: "flex-start",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: 'center',
         flexWrap: "nowrap"
     },
     partagerRecette: {
         left: 0,
-        height: 37,
         color: "#121212",
         alignSelf: "stretch",
         justifyContent: "space-between",
         margin: 10,
         fontSize: 30,
-        fontFamily: "roboto-700",
+        fontFamily: "helvetica",
         textAlign: "center"
     },
 
     partagerRecette1: {
         left: 10,
-        height: 30,
         color: "#121212",
         alignSelf: "stretch",
         justifyContent: "space-between",
         margin: 10,
         fontSize: 15,
-        fontFamily: "roboto-700",
+        fontFamily: "helvetica",
         textAlign: "center"
     },
     textInput: {
@@ -79,15 +75,7 @@ const styles = {
         fontFamily: "roboto-regular",
         textAlign: "left"
     },
-   
-    creerALaMain: {
-        flex: 1,
-        color: "rgba(24,11,251,1)",
-        alignSelf: "center",
-        justifyContent: "space-between",
-        fontFamily: "roboto-regular",
-        textAlign: "center"
-    },
+
     rect: {
         color: "#121212",
         flexDirection: "row",
@@ -95,43 +83,37 @@ const styles = {
         flexWrap: "wrap",
         justifyContent: "space-between"
     },
+
     button2: {
         height: 60,
         flex: 1,
-        backgroundColor: "rgba(215, 215, 215,1)",
+        backgroundColor: "#FF6F61",
         alignSelf: "stretch",
-        marginRight: 3,
-        marginLeft: 3
+        marginRight: 10,
+        marginLeft: 10,
+        borderRadius: 10,
     },
-    loremIpsum1: {
-        color: "#121212",
+    buttonText: {
+        color: "white",
         alignSelf: "stretch",
         justifyContent: "space-between",
         margin: 3,
         padding: 15,
         fontFamily: "roboto-regular",
         textAlign: "center",
-        flex: 1
+        flex: 1,
+        fontSize: 18,
     },
     button: {
         height: 60,
         flex: 1,
-        backgroundColor: "rgba(215, 215, 215,1)",
+        backgroundColor: "#FF6F61",
         alignSelf: "center",
         justifyContent: "space-between",
-        marginRight: 3,
-        marginLeft: 3
+        marginRight: 10,
+        marginLeft: 10,
+        borderRadius: 10,
     },
-    loremIpsum: {
-        flex: 1,
-        color: "#121212",
-        alignSelf: "stretch",
-        justifyContent: "space-between",
-        margin: 3,
-        padding: 15,
-        fontFamily: "roboto-regular",
-        textAlign: "center"
-    }
 };
 
 export default Partage;

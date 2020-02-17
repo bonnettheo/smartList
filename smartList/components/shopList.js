@@ -16,6 +16,7 @@ import {Body, Button, Container, Header, Left, Right, Title} from "native-base";
 import ListCarre from '../assets/squares.svg'
 import Checklist from '../assets/checklist.svg'
 import Menu from "../assets/menu.svg";
+import Share from "../assets/share.svg"
 
 
 
@@ -28,7 +29,7 @@ class ShopList extends Component {
 
         this.state = {
             name: props.name,
-            elements: ['patate', 'oeufs','Lardon','Lait', 'Farine', 'Lessive'],
+            elements: ['Rhum', 'oeufs','Beurre','Lait', 'Farine', 'Lessive'],
             states:{},
             counter: 0,
             showForm: 0,
@@ -37,8 +38,8 @@ class ShopList extends Component {
             showButtonAdd: false,
 
             sections: [
-                {title: 'Quiche Lorraine', data: ['Oeufs', 'Lardon', 'Lait', 'Farine']},
-                {title: 'Purée', data: ['Pomme de terre', 'Lait']},
+                {title: 'Crêpes faciles', data: ['Oeufs', 'Beurre', 'Lait', 'Farine']},
+                {title: 'Purée', data: ['Patate', 'Lait']},
                 {title: 'Autre', data: ['Lessive']}
             ]
         }
@@ -143,11 +144,16 @@ class ShopList extends Component {
                     <Left style={{flex: 1,}}>
                         <Button
                             style={styles.headerButtonText}
-                            transparent onPress={() => this.props.navigation.navigate('Partage')}>
+                            transparent>
                             <Menu height={35} width={35}/>
                         </Button>
                     </Left>
                     <Right style={{flex: 1,}}>
+                        <Button
+                            style={styles.headerButtonText}
+                            transparent onPress={() => this.props.navigation.navigate('Partage')}>
+                            <Share height={35} width={35}/>
+                        </Button>
                     </Right>
                 </Header>
                 <View style = {styles.allPages}>
@@ -169,7 +175,7 @@ class ShopList extends Component {
 
                         <TextInput
                             style={styles.textTitle}
-                            placeholder="Recette de paté au crabe"
+                            placeholder="Crêpes faciles"
                             onChangeText={(text) => this.setState({text})}
                             value={this.state.text}
                         />
@@ -212,6 +218,7 @@ const styles = StyleSheet.create({
 
         backgroundColor: 'white',
         marginRight: 15,
+        flex: 1,
 
     },
 
