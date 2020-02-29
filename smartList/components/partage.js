@@ -7,6 +7,7 @@ import {
     TouchableOpacity
 } from "react-native";
 import 'react-native-gesture-handler';
+import Toast from "react-native-simple-toast";
 
 class Partage extends React.Component {
     constructor(props) {
@@ -26,8 +27,11 @@ class Partage extends React.Component {
                     <TouchableOpacity style={styles.button2}>
                         <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('ShopList')}>Annuler</Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.button}>
-                        <Text style={styles.buttonText} onPress={() => this.props.navigation.navigate('ShopList')}>Partager</Text>
+                    <TouchableOpacity style={styles.button} >
+                        <Text style={styles.buttonText} onPress={() => {
+                            this.props.navigation.navigate('ShopList');
+                            Toast.show('Liste partagée');
+                        }}>Partager</Text>
                     </TouchableOpacity>
                 </View>
             </View>
