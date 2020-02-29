@@ -16,6 +16,7 @@ import {
     DrawerItemList,
     DrawerItem,
 } from '@react-navigation/drawer';
+import { Alert} from 'react-native'
 
 import Menu from "../assets/menu.svg";
 
@@ -100,22 +101,22 @@ class recipeList extends React.Component {
                 <View style={styles.container}>
                     <View style={styles.scrollArea}>
                         <FlatList
-                            data={[{title: "Pâte à crêpes simple", localisation: "../assets/crepesSimple.png"},
-                                {title: "Pâte à crêpes", localisation: "../assets/crepesSimple.png"},
-                                {title: "Pâte à crêpes (des plus raffinées)", localisation: "../assets/crepesSimple.png"},
-                                {title: "Pâte à crêpes légère", localisation: "../assets/crepesSimple.png"},
-                                {title: "Crêpes sans Lactose", localisation: "../assets/crepesSimple.png"},
-                                {title: "Crêpes sucrées", localisation: "../assets/crepesSimple.png"},
-                                {title: "Crêpes Vonassienne", localisation: "../assets/crepesSimple.png"}]}
+                            data={[{title: "Cheeseburger végétarien", resume: "Buger simple avec un steak de soja" ,localisation: "https://cac.img.pmdstatic.net/fit/http.3A.2F.2Fprd2-bone-image.2Es3-website-eu-west-1.2Eamazonaws.2Ecom.2Fcac.2F2018.2F09.2F25.2F03ab5e89-bad7-4a44-b952-b30c68934215.2Ejpeg/748x372/quality/90/crop-from/center/burger-maison.jpeg"},
+                                {title: "Chicken burger végétarien", resume: "Buger simple avec une imitation poulet", localisation: "https://static.cuisineaz.com/400x320/i81670-recette-burger-vegetarien-au-steak-de-carottes.jpg"},
+                                {title: "Burger galette de soja", resume: "Buger simple avec une galette de soja", localisation: "https://static.750g.com/images/622-auto/035824bfbafcbdd2673f722d402cca57/334479.jpg"},
+                                {title: "Burger pain au sésame sans viande", resume: "Buger rafiné avec pain au sésame", localisation: "https://1k9ch93e3xh2t4pa12vvmx1t-wpengine.netdna-ssl.com/wp-content/uploads/2019/07/Vegetarian-Beet-Quinoa-Burger_1.jpg"},
+                                {title: "Mini burger avec un oeuf", resume: "Mini-burger parfait pour l'apéro", localisation: "https://lh3.googleusercontent.com/proxy/xWlDrGejqQZA2qX-9pRmBzEsPCQulIJ4UaRZAjkFE8l8T5ezKR51ODgMFN5GFYBL4Zfq5CKuFVrEkEpGyxzixK0x2JX5LKsZCYlUz3yc3lqjBDJjtwsQtXb-uvL4ttYf"},
+                                {title: "Burger galette de pomme de terre", resume: "Buger simple avec une galette de pomme de terre", localisation: "https://www.lescuilleresenbois.com/wp-content/uploads/2017/02/IMG_5061.jpg"},
+                                {title: "Burger végétarien pain bistrot", resume: "Buger simple avec un steak de soja", localisation: "https://ccloutiernutrition.com/wp-content/uploads/2016/08/burger-vege-e1497144366733.jpg"}]}
                             keyExtractor={item => item.title}
                             renderItem={({item, separators}) => {
                                 return (<View style={styles.list}>
                                     <View style={styles.photo}>
-                                        <Image style={styles.imagePhoto} source={require("../assets/crepesSimple.png")} />
+                                        <Image style={styles.imagePhoto} source={{ uri: item.localisation }} />
                                     </View>
                                     <View style={styles.content}>
                                         <View style={styles.description}>
-                                            <Text style={styles.resume}>Résumé</Text>
+                                            <Text style={styles.resume}>{item.resume}</Text>
                                             <Text style={styles.titre}>{item.title}</Text>
                                         </View>
                                         <View style={styles.addUser}>
@@ -134,7 +135,10 @@ class recipeList extends React.Component {
                                     </View>
                                     <TouchableOpacity
                                         style={styles.button2}
-                                        onPress={() => this.props.navigation.navigate('ShopList')}
+                                        onPress={() => {
+                                            Alert.alert( 'Nouvelle liste','Votre liste a bien été créée',[{text: 'OK'}]);
+                                            this.props.navigation.navigate('ShopList')
+                                        }}
                                     >
                                         <FontAwesomeIcon
                                             name='plus'
@@ -204,7 +208,7 @@ const styles = {
         flexDirection: "column-reverse",
         alignItems: "stretch",
         alignSelf: "stretch",
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
     },
     resume: {
         flex: 1,
@@ -213,6 +217,8 @@ const styles = {
         fontFamily: "helvetica",
         textAlign: "left",
         marginLeft: 5,
+
+        fontSize: 10,
     },
     titre: {
         height: 40,

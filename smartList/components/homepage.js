@@ -73,7 +73,9 @@ class HomePage extends React.Component {
                             <Text>Mango</Text>
                         </Body>
                     </ListItem>
-                    <Button style={{backgroundColor:'#FF6F61'}}><Text>+ Ajouter</Text></Button>
+                    <Button  style={{backgroundColor:'#FF6F61'}} onPress={() =>this._closeMenu()}>
+                        <Text>+ Ajouter</Text>
+                        </Button>
                     </View>
                   
                   </Menu>

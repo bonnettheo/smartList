@@ -30,7 +30,7 @@ class ShopList extends Component {
 
         this.state = {
             name: props.name,
-            elements: ['Rhum', 'oeufs','Beurre','Lait', 'Farine', 'Lessive'],
+            elements: ['Pain à burger', 'oeufs','Steak de soja','cheddar', 'Salade', 'Tomate', 'Avocat'],
             states:{},
             counter: 0,
             showForm: 0,
@@ -39,9 +39,7 @@ class ShopList extends Component {
             showButtonAdd: false,
 
             sections: [
-                {title: 'Crêpes faciles', data: ['Oeufs', 'Beurre', 'Lait', 'Farine']},
-                {title: 'Purée', data: ['Patate', 'Lait']},
-                {title: 'Autre', data: ['Lessive']}
+                {title: 'Burger végétarien', data: ['Pain à burger', 'oeufs','Steak de soja','cheddar', 'Salade', 'Tomate', 'Avocat']}
             ]
         }
     }
@@ -176,7 +174,7 @@ class ShopList extends Component {
 
                         <TextInput
                             style={styles.textTitle}
-                            placeholder="Crêpes faciles"
+                            placeholder="Burger végétarien"
                             onChangeText={(text) => this.setState({text})}
                             value={this.state.text}
                         />
