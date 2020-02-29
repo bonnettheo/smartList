@@ -17,6 +17,7 @@ import {
     DrawerItem,
 } from '@react-navigation/drawer';
 import { Alert} from 'react-native'
+import Toast from 'react-native-simple-toast';
 
 import Menu from "../assets/menu.svg";
 
@@ -136,8 +137,9 @@ class recipeList extends React.Component {
                                     <TouchableOpacity
                                         style={styles.button2}
                                         onPress={() => {
-                                            Alert.alert( 'Nouvelle liste','Votre liste a bien été créée',[{text: 'OK'}]);
-                                            this.props.navigation.navigate('ShopList')
+                                            //Alert.alert( 'Nouvelle liste','Votre liste a bien été créée',[{text: 'OK'}]);
+                                            Toast.show('Liste crée');
+                                            this.props.navigation.navigate('ShopList');
                                         }}
                                     >
                                         <FontAwesomeIcon
