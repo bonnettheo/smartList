@@ -16,10 +16,10 @@ class HomePage extends React.Component {
         checked2: false,
         checked3: false,
         checked4: false,
-      };
-      _openMenu = () => this.setState({ visible: true });
+    };
+    _openMenu = () => this.setState({ visible: true });
 
-  _closeMenu = () => this.setState({ visible: false });
+    _closeMenu = () => this.setState({ visible: false });
 
     render() {
         const { checked1,checked2,checked3,checked4 } = this.state;
@@ -34,51 +34,51 @@ class HomePage extends React.Component {
                         <Title style={styles.titleHearderText}>Choix de liste</Title>
                     </Body>
                     <Right style={{flex: 1,}}>
-                    <Menu
-                visible={this.state.visible}
-                onDismiss={this._closeMenu}
-                style={styles.menu}
-                anchor={
-                <Button transparent 
-                  onPress={this._openMenu}>
-                  <Icon name='person' />
-                  </Button>}>
-                    <View style={{margin:10}}>
-                      <Text style={styles.title}>Préférence </Text>
-                  <ListItem>
-                  <Checkbox
-                  status={checked1 ? 'checked' : 'unchecked'}
-                  onPress={() => { this.setState({ checked1: !checked1 }); }}
-                  />
-                        <Body>
-                            <Text>Végétarien</Text>
-                        </Body>
-                    </ListItem>
-                    <Text>Allergique aux</Text>
-                    <ListItem>
-                  <Checkbox
-                  status={checked2 ? 'checked' : 'unchecked'}
-                  onPress={() => { this.setState({ checked2: !checked2 }); }}
-                  />
-                        <Body>
-                            <Text>Fruit de mer</Text>
-                        </Body>
-                    </ListItem>
-                    <ListItem>
-                  <Checkbox
-                  status={checked3 ? 'checked' : 'unchecked'}
-                  onPress={() => { this.setState({ checked3: !checked3 }); }}
-                  />
-                        <Body>
-                            <Text>Mango</Text>
-                        </Body>
-                    </ListItem>
-                    <Button  style={{backgroundColor:'#FF6F61'}} onPress={() =>this._closeMenu()}>
-                        <Text>+ Ajouter</Text>
-                        </Button>
-                    </View>
-                  
-                  </Menu>
+                        <Menu
+                            visible={this.state.visible}
+                            onDismiss={this._closeMenu}
+                            style={styles.menu}
+                            anchor={
+                                <Button transparent
+                                        onPress={this._openMenu}>
+                                    <Icon name='person' />
+                                </Button>}>
+                            <View style={{margin:10}}>
+                                <Text style={styles.title}>Préférence </Text>
+                                <ListItem>
+                                    <Checkbox
+                                        status={checked1 ? 'checked' : 'unchecked'}
+                                        onPress={() => { this.setState({ checked1: !checked1 }); }}
+                                    />
+                                    <Body>
+                                        <Text>Végétarien</Text>
+                                    </Body>
+                                </ListItem>
+                                <Text>Allergique aux</Text>
+                                <ListItem>
+                                    <Checkbox
+                                        status={checked2 ? 'checked' : 'unchecked'}
+                                        onPress={() => { this.setState({ checked2: !checked2 }); }}
+                                    />
+                                    <Body>
+                                        <Text>Fruit de mer</Text>
+                                    </Body>
+                                </ListItem>
+                                <ListItem>
+                                    <Checkbox
+                                        status={checked3 ? 'checked' : 'unchecked'}
+                                        onPress={() => { this.setState({ checked3: !checked3 }); }}
+                                    />
+                                    <Body>
+                                        <Text>Mango</Text>
+                                    </Body>
+                                </ListItem>
+                                <Button  style={{backgroundColor:'#FF6F61'}} onPress={() =>this._closeMenu()}>
+                                    <Text>+ Ajouter</Text>
+                                </Button>
+                            </View>
+
+                        </Menu>
                     </Right>
                 </Header>
                 <Body style={{flex: 1}}>
@@ -162,14 +162,14 @@ const styles = StyleSheet.create({
 
     titleHearderText: {
         textTransform: 'uppercase',
-        fontSize: 17,
+        fontSize: 15,
     },
     menu: {
         width:250,
         padding:20,
     },
     title: {
-      fontSize: 20,
+        fontSize: 20,
     },
 
 

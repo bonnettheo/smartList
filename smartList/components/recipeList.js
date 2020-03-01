@@ -138,7 +138,7 @@ class recipeList extends React.Component {
                                         style={styles.button2}
                                         onPress={() => {
                                             //Alert.alert( 'Nouvelle liste','Votre liste a bien été créée',[{text: 'OK'}]);
-                                            Toast.show('Liste crée');
+                                            Toast.show('La liste a été ajoutée');
                                             this.props.navigation.navigate('ShopList');
                                         }}
                                     >
@@ -255,7 +255,7 @@ const styles = {
     },
     icon2: {
         color: "#FF6F61",
-        fontSize: 46,
+        fontSize: 35,
         marginTop: 2
     },
     button2: {
@@ -330,7 +330,7 @@ const styles = {
 
     titleHearderText: {
         textTransform: 'uppercase',
-        fontSize: 17,
+        fontSize: 14,
     }
 };
 

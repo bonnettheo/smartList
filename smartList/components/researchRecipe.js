@@ -21,11 +21,6 @@ class Welcome extends React.Component {
 
                 <Header style={styles.hearderStyle}>
                     <Left style={{flex: 1,}}>
-                        <Button
-                            style={styles.headerButtonText}
-                            transparent onPress={() => this.props.navigation.navigate('Partage')}>
-                            <Menu height={35} width={35}/>
-                        </Button>
                     </Left>
                     <Body style={styles.titleHearder}>
                         <Title style={styles.titleHearderText}>Ajout de liste</Title>
@@ -73,7 +68,7 @@ const styles = {
         alignSelf: "stretch",
         justifyContent: "space-between",
         margin: 10,
-        marginBottom: 60,
+        marginBottom: 20,
         fontSize: 25,
         fontFamily: "roboto-700",
         textAlign: "center"
@@ -112,11 +107,11 @@ const styles = {
         justifyContent: "space-between"
     },
     button2: {
-        height: 60,
+        height: 50,
         flex: 1,
         alignSelf: "stretch",
-        marginRight: 3,
-        marginLeft: 3,
+        marginRight: 10,
+        marginLeft: 10,
         backgroundColor: '#FF6F61',
         borderRadius: 10,
     },
@@ -125,19 +120,19 @@ const styles = {
         alignSelf: "stretch",
         justifyContent: "space-between",
         margin: 3,
-        padding: 15,
+        padding: 10,
         fontFamily: "roboto-regular",
         textAlign: "center",
         flex: 1,
         fontSize: 18,
     },
     button: {
-        height: 60,
+        height: 50,
         flex: 1,
         alignSelf: "center",
         justifyContent: "space-between",
-        marginRight: 3,
-        marginLeft: 3,
+        marginRight: 10,
+        marginLeft: 10,
         backgroundColor: '#FF6F61',
         borderRadius: 10,
     },
@@ -147,7 +142,7 @@ const styles = {
         alignSelf: "stretch",
         justifyContent: "space-between",
         margin: 3,
-        padding: 15,
+        padding: 10,
         fontFamily: "helvetica",
         textAlign: "center",
         fontSize: 18,
@@ -176,7 +171,7 @@ const styles = {
 
     titleHearderText: {
         textTransform: 'uppercase',
-        fontSize: 17,
+        fontSize: 15,
     }
 };
 

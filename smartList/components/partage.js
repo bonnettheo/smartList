@@ -89,7 +89,7 @@ const styles = {
     },
 
     button2: {
-        height: 60,
+        height: 50,
         flex: 1,
         backgroundColor: "#FF6F61",
         alignSelf: "stretch",
@@ -102,14 +102,14 @@ const styles = {
         alignSelf: "stretch",
         justifyContent: "space-between",
         margin: 3,
-        padding: 15,
+        padding: 10,
         fontFamily: "roboto-regular",
         textAlign: "center",
         flex: 1,
         fontSize: 18,
     },
     button: {
-        height: 60,
+        height: 50,
         flex: 1,
         backgroundColor: "#FF6F61",
         alignSelf: "center",

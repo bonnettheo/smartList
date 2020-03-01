@@ -35,7 +35,7 @@ class ShopList extends Component {
             counter: 0,
             showForm: 0,
 
-            boolListCheck: true,
+            boolShowForm: true,
             showButtonAdd: false,
 
             sections: [
@@ -82,7 +82,7 @@ class ShopList extends Component {
                     style={styles.addElement}
                     onPress={() => this.props.navigation.navigate('ResearchRecipe')}
                 >
-                    <Text style={styles.addThingsText}>Element</Text>
+                    <Text style={styles.addThingsText}>Elément</Text>
                 </Button>
             )
         }
@@ -158,17 +158,18 @@ class ShopList extends Component {
                 <View style = {styles.allPages}>
 
                     <View style = {styles.buttonViewListeRecette}>
-                        <TouchableOpacity style={styles.buttonRecette} onPress={() => this.setState({showForm: 0})}>
-                            {/*<Text style = {styles.buttonRecetteText}>
-                                Recette
-                            </Text>*/}
+                        {/*<TouchableOpacity style={styles.buttonRecette} onPress={() => this.setState({showForm: 0})}>*/}
+                        <TouchableOpacity
+                            style={this.state.boolShowForm ? styles.buttonRecettePress : styles.buttonRecette}
+                            disabled={this.state.boolShowForm}
+                            onPress={() => this.setState({showForm: 0, boolShowForm: true})}>
                             <ListCarre width={45} height={45}/>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={styles.buttonListe} onPress={() => this.setState({showForm: 1})}>
-                            {/* <Text style = {styles.buttonListeText}>
-                                Liste
-                            </Text>*/}
+                        <TouchableOpacity
+                            style={this.state.boolShowForm ? styles.buttonListe : styles.buttonListePress}
+                            disabled={!this.state.boolShowForm}
+                            onPress={() => this.setState({showForm: 1, boolShowForm: false})}>
                             <Checklist width={45} height={45}/>
                         </TouchableOpacity>
 
@@ -223,9 +224,11 @@ const styles = StyleSheet.create({
 
     textCheckBox: {
         marginTop: 5,
+        marginRight: 80,
         fontSize: 20,
         fontFamily: 'Helvetica Neue',
         textTransform: 'capitalize',
+        flex: 3,
 
     },
 
@@ -237,6 +240,7 @@ const styles = StyleSheet.create({
         margin: 10,
 
         borderColor: '#FF6F61',
+        flex: 1,
     },
 
     checkBoxAndElement: {
@@ -292,8 +296,18 @@ const styles = StyleSheet.create({
         marginLeft: 10,
     },
 
+    buttonRecettePress: {
+        marginLeft: 10,
+        backgroundColor: '#e5e5e5',
+        borderRadius: 10,
+    },
+
     buttonListe: {
-        fontFamily: 'Helvetica Neue',
+    },
+
+    buttonListePress: {
+        backgroundColor: '#e5e5e5',
+        borderRadius: 10,
     },
 
     inputNumber: {
@@ -301,9 +315,11 @@ const styles = StyleSheet.create({
         borderStyle: 'solid',
         borderWidth: 2,
         borderRadius: 10,
-        fontSize: 18,
+        fontSize: 16,
         fontFamily: 'Helvetica Neue',
         backgroundColor: 'white',
+        paddingTop: -2,
+        paddingBottom: -2,
 
         textAlign: 'center',
     },
@@ -313,22 +329,21 @@ const styles = StyleSheet.create({
         alignContent: 'space-around',
         alignItems: 'flex-start',
         marginLeft: 20,
-        marginBottom: 10,
+        marginBottom: 5,
     },
 
     viewIncrement: {
         display: 'flex',
         flexDirection: 'row',
-        width: 300 * 0.62,
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        marginStart: 75,
     },
 
     buttonIncr: {
         fontSize: 30,
         marginRight: 3,
+        marginLeft: 3,
     },
 
     sectionHeader: {
